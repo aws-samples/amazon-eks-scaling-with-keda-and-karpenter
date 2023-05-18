@@ -95,7 +95,7 @@ helm upgrade --install --namespace karpenter --create-namespace \
   --set settings.aws.interruptionQueueName=${CLUSTER_NAME} \
   --wait
 
-#deploy Providers & AWSNodeTemplate 
+#deploy Provisioner & AWSNodeTemplate 
 echo "Providers & AWSNodeTemplate "
 cat <<EOF | kubectl apply -f -
 apiVersion: karpenter.sh/v1alpha5

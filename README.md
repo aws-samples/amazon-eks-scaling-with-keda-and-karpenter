@@ -37,15 +37,15 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
 
 1. Clone this repository to your local machine or download it as a ZIP file.
    ```shell
-   git clone https://github.com/khanasif1/aws-eks-keda-karpenter.git
+   git clone https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter.git
    ```
 
 2. Navigate to the repository's directory.
    ```shell
-   cd aws-eks-keda-karpenter
+   cd amazon-eks-scaling-with-keda-and-karpenter
    ```
 
-3. Update environmentVariables.sh file 
+3. Update environmentVariables.sh file in /deployment
 
 | Variable Name               | Description                                                                                         |
 |-----------------------------|-----------------------------------------------------------------------------------------------------|
@@ -81,6 +81,8 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
   <img  src="https://github.com/khanasif1/aws-eks-keda-karpenter/blob/main/img/deploymentverify.jpg?raw=true">
 </p>
 
+
+🚨
 
 ## Configuration
 
