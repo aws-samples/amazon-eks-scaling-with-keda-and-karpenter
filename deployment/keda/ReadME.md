@@ -1,7 +1,7 @@
 
 ## Update KEDA configuration 
 
-File environmentVariables.sh file in /deployment
+environmentVariables.sh file in /deployment
 
 
 | Variable Name               | Description                                                                                         |
