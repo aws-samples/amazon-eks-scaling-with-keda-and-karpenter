@@ -88,8 +88,8 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
 
 The repository contains the necessary configuration files for deploying KEDA and Karpenter. You can modify these files to suit your specific requirements. Here are some important files to note:
 
-- [/deploy/keda](https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/tree/main/deployment/karpenter): Contains the deployment files for KEDA components.
-- [/deploy/karpenter](https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/tree/main/deployment/keda): Contains the deployment files for Karpenter components.
+- [/deploy/keda](https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/tree/main/deployment/keda): Contains the deployment files for KEDA components.
+- [/deploy/karpenter](https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/tree/main/deployment/karpenter): Contains the deployment files for Karpenter components.
 
 Feel free to modify these files according to your needs.
 
