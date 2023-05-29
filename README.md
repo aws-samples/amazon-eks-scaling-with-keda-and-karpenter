@@ -84,6 +84,7 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
 🚨 If you experience error while deploying Karpenter.🚨
 
 - <span style="color:red">Please check latest karpenter version from https://karpenter.sh -> Getting Started. It should match with supported version</span>
+<br>
   <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/Karpenterversion.jpg">
 -
 
