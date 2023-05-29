@@ -28,14 +28,6 @@ docker logout public.ecr.aws
 
 #Create the KarpenterNode IAM Role
 echo "${GREEN}Create the KarpenterNode IAM Role"
-#"./deployment/karpenter/cloudformation.yaml" \
-# curl -fsSL https://karpenter.sh/"${KARPENTER_VERSION}"/getting-started/getting-started-with-karpenter/cloudformation.yaml  > $TEMPOUT \&& 
-# aws cloudformation deploy \
-#   --stack-name "Karpenter-${CLUSTER_NAME}" \
-#   --template-file "${TEMPOUT}" \ 
-#   --capabilities CAPABILITY_NAMED_IAM \
-#   --parameter-overrides "ClusterName=${CLUSTER_NAME}" \
-#   --region ${AWS_REGION}
 
 curl -fsSL https://karpenter.sh/"${KARPENTER_VERSION}"/getting-started/getting-started-with-karpenter/cloudformation.yaml  > $TEMPOUT \
 && aws cloudformation deploy \
@@ -84,15 +76,17 @@ aws iam create-service-linked-role --aws-service-name spot.amazonaws.com 2> /dev
 #Helm Install Karpenter
 echo "Helm Install Karpenter"
 export CLUSTER_ENDPOINT="$(aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.endpoint" --output text)"
-helm upgrade --install --namespace karpenter --create-namespace \
-  karpenter oci://public.ecr.aws/karpenter/karpenter \
+
+helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --namespace karpenter --create-namespace \
   --version ${KARPENTER_VERSION} \
   --set serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=${KARPENTER_IAM_ROLE_ARN} \
   --set settings.aws.clusterName=${CLUSTER_NAME} \
-  --set settings.aws.clusterEndpoint=${CLUSTER_ENDPOINT} \
-  --set defaultProvisioner.create=false \
   --set settings.aws.defaultInstanceProfile=KarpenterNodeInstanceProfile-${CLUSTER_NAME} \
   --set settings.aws.interruptionQueueName=${CLUSTER_NAME} \
+  --set controller.resources.requests.cpu=1 \
+  --set controller.resources.requests.memory=1Gi \
+  --set controller.resources.limits.cpu=1 \
+  --set controller.resources.limits.memory=1Gi \
   --wait
 
 #deploy Provisioner & AWSNodeTemplate 

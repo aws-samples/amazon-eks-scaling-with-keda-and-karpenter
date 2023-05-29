@@ -47,6 +47,8 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
 
 3. Update environmentVariables.sh file in /deployment
 
+## Please check latest karpenter version from https://karpenter.sh ==> Getting Started
+
 | Variable Name               | Description                                                                                         |
 |-----------------------------|-----------------------------------------------------------------------------------------------------|
 | `AWS_REGION`                | The AWS region.                                                                                     |
@@ -82,7 +84,9 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
 </p>
 
 
-🚨
+
+## 🚨 Cleanup 🚨
+
 
 ## Configuration
 

@@ -10,7 +10,7 @@ export DYNAMODB_TABLE="payments"
 export CLUSTER_NAME="eks-demo-scale"
 
 #Karpenter Variables
-export KARPENTER_VERSION=v0.27.3 #v0.20.0 v0.26.1   
+export KARPENTER_VERSION=v0.27.5 #v0.20.0 v0.26.1   
 
 #KEDA Variables
 export NAMESPACE=keda
