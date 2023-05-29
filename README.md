@@ -81,13 +81,13 @@ To install KEDA and Karpenter on your AWS EKS cluster, follow these steps:
   <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/deploymentverify.jpg?raw=true">
 </p>
 
-🚨 <span style="color:green;font-weight:700;font-size:20px">If you experience error while deploying Karpenter, I can be due to Karpenter supports limited version and you may be havign old version in environmentVariables.sh. Please follow steps below:</span>🚨
+🚨 If you are experiencing error while deploying Karpenter, it can be due to Karpenter repository currently supports limited version and you may be havign old version in environmentVariables.sh. Please follow steps below:🚨
 
-- <span style="color:green;font-weight:700;font-size:20px">Please check latest karpenter version from https://karpenter.sh -> Getting Started. It should match with supported version</span>
+- <span style="color:green;font-weight:700;font-size:20px">Please check latest karpenter version from https://karpenter.sh -> Getting Started. environmentVariables should match with supported version</span>
 <br>
   <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/Karpenterversion.jpg">
 
-- <span style="color:green;font-weight:700;font-size:20px">Check file createkarpenter.sh under deployment-->karpenter line 80 - 90 and compare with karpneter getting started helm</span>
+- <span style="color:green;font-weight:700;font-size:20px">Check file createkarpenter.sh under deployment-->karpenter line 80 - 90 and compare with karpneter getting started helm https://karpenter.sh/</span>
 <br>
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/karpenterhelm.jpg">
 
