@@ -9,7 +9,7 @@ echo "${GREEN}=========================="
 
 source ./deployment/environmentVariables.sh
 
-echo "${RED} Karpenter will be deployed on cluster $(kubectl config current-context) \n ${RED}Casesenstive ${BLUE} Press Y = Proceed \n or \n N = Cancel (change context 'kubectl config use-context {context name you can check using kubectl config view}' and run script)"
+echo "${RED}Casesenstive ${BLUE} Press Y = Proceed \n or \n N = Cancel (change context 'kubectl config use-context {context name you can check using kubectl config view}' and run script)"
 read user_input
 #kubectl config use-context akaasif-Isengard@${CLUSTER_NAME}.${AWS_REGION}.eksctl.io
 #kubectl config current-context
