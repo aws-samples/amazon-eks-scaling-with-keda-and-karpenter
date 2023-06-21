@@ -6,14 +6,16 @@ source ./deployment/environmentVariables.sh
 echo "${BLUE}Please check the details before proceeding \n AWS Account: ${ACCOUNT_ID} \n AWS Region for deployment : ${AWS_REGION} \n 
 ${RED}Please check the Karpenter version you have selected is available at \n\n  https://karpenter.sh \n\nAlso please check #Experiencing Issues# section before proceeding.  \n
 ${RED}Casesenstive ${BLUE}Press Y = Proceed or N = Cancel"
+echo "${CYAN}Response: "
 read user_input
 Entry='Y'
 if [[ "$user_input" == *"$Entry"* ]]; then
     CLUSTER=1
     CLUSTER_KARPENTER=2
     CLUSTER_KARPENTER_KEDA=3
-  : '
+
     echo "${BLUE} Please select the deployment modules : \n 1. Press 1 to deploy only EKS cluster \n 2. Press 2 to deploy EKS cluster with Karpenter \n 3. Press 3 if you want to deploy EKS cluster, Karpenter & KEDA"
+    echo "${CYAN}Response: "
     read user_input 
     if [[ "$user_input" == $CLUSTER ]]; then
         echo "Deploy EKS"
@@ -63,7 +65,7 @@ if [[ "$user_input" == *"$Entry"* ]]; then
         echo "${GREEN}Deploy Demo components DynamoDB and SQS!!"
         chmod u+x ./deployment/services/awsService.sh 
         ./deployment/services/awsService.sh 
-       '
+       
     fi 
 else
 
