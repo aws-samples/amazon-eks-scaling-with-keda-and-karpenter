@@ -94,8 +94,17 @@ If you are experiencing error while deploying Karpenter, it can be due to Karpen
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/karpenterhelm.jpg">
 
 ## 🚨 Cleanup 🚨
+1. Navigate to the repository's root directory.
+   ```shell
+   cd amazon-eks-scaling-with-keda-and-karpenter
+   ```
 
+2. To strat cleanup
+    ```shell
+    sh ./cleanup.sh
+    ```
 
+This will delelte all the AWS services and workloads created for the solution.
 ## Configuration
 
 The repository contains the necessary configuration files for deploying KEDA and Karpenter. You can modify these files to suit your specific requirements. Here are some important files to note:
