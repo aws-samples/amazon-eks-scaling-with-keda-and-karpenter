@@ -112,16 +112,17 @@ I am using iTerm2 on Mac with K9s to connect with cluster and run scripts
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/setenv.jpg">
 
 6. Run `keda-mock-sqs-post.py` script on all four terminals
+
    ```shell
    python3 ./app/keda/keda-mock-sqs-post.py
    ```
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/runloadscript.jpg">
 
 7. Pod sclaing using KEDA
-<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/nodescaling.jpg">
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/podscaling.jpg">
 
 8. Node scaling using Karpenter
-<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/podscaling.jpg">
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/nodescaling.jpg">
 
 ## 🚨 Cleanup 🚨
 1. Navigate to the repository's root directory.
