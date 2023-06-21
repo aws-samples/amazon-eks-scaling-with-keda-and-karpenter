@@ -30,6 +30,7 @@ Before you begin, ensure that you have the following prerequisites:
 - [AWS CLI](https://aws.amazon.com/cli/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl)
 - [helm](https://helm.sh/)
+- [K9s](https://k9scli.io/topics/install/)
 
 ## Installation
 
@@ -92,6 +93,35 @@ If you are experiencing error while deploying Karpenter, it can be due to Karpen
 - <span style="color:green;font-weight:700;font-size:20px">Check file createkarpenter.sh under deployment-->karpenter line 80 - 90 and compare with karpneter getting started helm https://karpenter.sh/</span>
 <br>
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/karpenterhelm.jpg">
+
+## Mock Testing
+I am using iTerm2 on Mac with K9s to connect with cluster and run scripts
+
+1. Once Cluster, Karpenter & KEDA is deployed
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/deploymentcompleted.jpg">
+
+2. Open two more terminal and connect to cluster using K9s (check Prerequisites)
+
+3. In first terminal with K9s, navigate to `keda-test` namespace `pod` view
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/pod.jpg">
+
+4. In seconds terminal with k9s, navigate to `Nodes`
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/node.jpg">
+
+5. Open three or more terminals, copy content from `deployment/environmentVariables.sh` and run it on all three terminal
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/setenv.jpg">
+
+6. Run `keda-mock-sqs-post.py` script on all four terminals
+   ```shell
+   python3 ./app/keda/keda-mock-sqs-post.py
+   ```
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/runloadscript.jpg">
+
+7. Pod sclaing using KEDA
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/nodescaling.jpg">
+
+8. Node scaling using Karpenter
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/podscaling.jpg">
 
 ## 🚨 Cleanup 🚨
 1. Navigate to the repository's root directory.
