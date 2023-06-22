@@ -97,6 +97,9 @@ If you are experiencing error while deploying Karpenter, it can be due to Karpen
 ## Mock Testing 💻
 I have used [iTerm2](https://iterm2.com/downloads.html) on Mac with `K9s` to connect with cluster and run scripts
 
+### Architecture
+<img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/mockarchitecture.jpg">
+
 1. Once Cluster, Karpenter & KEDA is deployed
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/deploymentcompleted.jpg">
 
