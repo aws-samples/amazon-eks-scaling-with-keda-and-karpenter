@@ -21,7 +21,7 @@ KEDA enables autoscaling of Kubernetes pods based on the number of events in eve
 </p>
 
 <p align="center">
-[![Watch the video](https://1000logos.net/wp-content/uploads/2017/05/YouTube-Logo-2011.jpg)](https://youtu.be/yOzyXY97CrI)
+[![Watch the video](https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/YouTube-Logo.jpg)](https://youtu.be/yOzyXY97CrI)
 </p>
 
 ## Prerequisites
