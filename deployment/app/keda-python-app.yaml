@@ -20,8 +20,15 @@ spec:
         imagePullPolicy: Always
         env:
         - name: SQS_QUEUE_URL
-          value: https://sqs.us-west-1.amazonaws.com/809980971988/keda-demo-queue.fifo
+          value: https://sqs.ap-southeast-2.amazonaws.com/809980971988/keda-demo-queue.fifo
         - name: DYNAMODB_TABLE
           value: payments
         - name: AWS_REGION
-          value: us-west-1
+          value: ap-southeast-2
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

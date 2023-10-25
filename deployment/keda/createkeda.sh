@@ -133,6 +133,13 @@ spec:
           value: ${DYNAMODB_TABLE}
         - name: AWS_REGION
           value: ${AWS_REGION}
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 EOF
 
 

@@ -122,6 +122,11 @@ I have used [iTerm2](https://iterm2.com/downloads.html) on Mac with `K9s` to con
 6. Run `keda-mock-sqs-post.py` script on all four terminals
 
    ```shell
+   cd app/keda
+   python3 -m venv env
+   source env/bin/activate
+   pip install boto3
+   cd  {your path}/amazon-eks-scaling-with-keda-and-karpenter
    python3 ./app/keda/keda-mock-sqs-post.py
    ```
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/runloadscript.jpg">

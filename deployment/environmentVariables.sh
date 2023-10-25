@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "Setting environment variables"
 #Shared Variables
-export AWS_REGION="ap-south-1"
+export AWS_REGION="ap-southeast-2"
 export ACCOUNT_ID="$(aws sts get-caller-identity --query Account --output text)"
 export TEMPOUT=$(mktemp) 
 export DYNAMODB_TABLE="payments"
@@ -10,7 +10,7 @@ export DYNAMODB_TABLE="payments"
 export CLUSTER_NAME="eks-demo-scale"
 
 #Karpenter Variables
-export KARPENTER_VERSION=v0.28.0
+export KARPENTER_VERSION=v0.31.1
 
 #KEDA Variables
 export NAMESPACE=keda
