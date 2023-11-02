@@ -77,8 +77,6 @@ aws iam create-service-linked-role --aws-service-name spot.amazonaws.com 2> /dev
 echo "Helm Install Karpenter"
 export CLUSTER_ENDPOINT="$(aws eks describe-cluster --name ${CLUSTER_NAME} --query "cluster.endpoint" --output text)"
 
-helm registry logout public.ecr.aws
-
 helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --namespace karpenter --create-namespace \
   --version ${KARPENTER_VERSION} \
   --set serviceAccount.annotations."eks\.amazonaws\.com/role-arn"=${KARPENTER_IAM_ROLE_ARN} \
@@ -93,47 +91,44 @@ helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter --name
 
 #deploy Provisioner & AWSNodeTemplate 
 echo "Providers & AWSNodeTemplate "
-cat <<EOF | envsubst | kubectl apply -f -
-apiVersion: karpenter.sh/v1beta1
-kind: NodePool
+cat <<EOF | kubectl apply -f -
+apiVersion: karpenter.sh/v1alpha5
+kind: Provisioner
 metadata:
   name: default
 spec:
-  template:
-    spec:
-      requirements:
-        - key: karpenter.sh/capacity-type
-          operator: NotIn
-          values: ["spot"]
-        - key: node.kubernetes.io/instance-type
-          operator: In
-          values: ["m5.xlarge", "m5.2xlarge"]
-      nodeClassRef:
-        name: default
+  labels:
+    intent: apps
+  requirements:
+    - key: karpenter.sh/capacity-type
+      operator: In
+      values: ["spot"]
+    - key: karpenter.k8s.aws/instance-size
+      operator: NotIn
+      values: [nano, micro, small, medium, large]
   limits:
-    cpu: 1000
-  disruption:
-    consolidationPolicy: WhenUnderutilized
-    expireAfter: 720h # 30 * 24h = 720h
+    resources:
+      cpu: 1000
+      memory: 1000Gi
+  ttlSecondsAfterEmpty: 30
+  ttlSecondsUntilExpired: 2592000
+  providerRef:
+    name: default
 ---
-apiVersion: karpenter.k8s.aws/v1beta1
-kind: EC2NodeClass
+apiVersion: karpenter.k8s.aws/v1alpha1
+kind: AWSNodeTemplate
 metadata:
   name: default
 spec:
-  amiFamily: AL2 # Amazon Linux 2
-  role: "KarpenterNodeRole-${CLUSTER_NAME}" # replace with your cluster name
-  subnetSelectorTerms:
-    - tags:
-        karpenter.sh/discovery: "${CLUSTER_NAME}" # replace with your cluster name
-  securityGroupSelectorTerms:
-    - tags:
-        karpenter.sh/discovery: "${CLUSTER_NAME}" # replace with your cluster name
+  subnetSelector:
+    alpha.eksctl.io/cluster-name: ${CLUSTER_NAME}
+  securityGroupSelector:
+    alpha.eksctl.io/cluster-name: ${CLUSTER_NAME}
+  tags:
+    KarpenerProvisionerName: "default"
+    NodeType: "karpenter-workshop"
+    IntentLabel: "apps"
 EOF
-
-
-
-
 echo "${GREEN}=========================="
 echo "${GREEN}Karpenter Completed"
 echo "${GREEN}=========================="

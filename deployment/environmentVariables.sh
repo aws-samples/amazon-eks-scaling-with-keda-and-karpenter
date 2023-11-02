@@ -8,9 +8,10 @@ export DYNAMODB_TABLE="payments"
 
 #Cluster Variables
 export CLUSTER_NAME="eks-demo-scale"
+export K8sversion="1.28"
 
 #Karpenter Variables
-export KARPENTER_VERSION=v0.31.1
+export KARPENTER_VERSION=v0.32.0
 
 #KEDA Variables
 export NAMESPACE=keda
@@ -29,10 +30,3 @@ GREEN=$(tput setaf 2)
 CYAN=$(tput setaf 6)
 BLUE=$(tput setaf 4)
 NC=$(tput sgr0)
-
-
-
-
-
-
-

@@ -119,7 +119,13 @@ I have used [iTerm2](https://iterm2.com/downloads.html) on Mac with `K9s` to con
 5. Open three or more terminals, copy content from `deployment/environmentVariables.sh` and run it on all three terminal
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/setenv.jpg">
 
-6. Run `keda-mock-sqs-post.py` script on all four terminals
+6. In the terminal run below command to test Karpenter status. If you see error first fix it before moving furthe
+```
+kubectl logs -f -n karpenter -l app.kubernetes.io/name=karpenter -c controller
+
+```
+
+7. Run `keda-mock-sqs-post.py` script on all four terminals
 
    ```shell
    cd app/keda
@@ -131,10 +137,10 @@ I have used [iTerm2](https://iterm2.com/downloads.html) on Mac with `K9s` to con
    ```
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/runloadscript.jpg">
 
-7. Pod sclaing using KEDA
+8. Pod sclaing using KEDA
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/podscaling.jpg">
 
-8. Node scaling using Karpenter
+9. Node scaling using Karpenter
 <img  src="https://github.com/aws-samples/amazon-eks-scaling-with-keda-and-karpenter/blob/main/img/nodescaling.jpg">
 
 ## 🚨 Cleanup 🚨
